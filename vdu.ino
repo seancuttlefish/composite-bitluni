@@ -1,5 +1,6 @@
 /*******************************************************************
 * Visual Display Unit (VDU)                                        *
+* v0.0.1                                                           *
 * Sean Clark                                                       *
 * Interact digital Arts                                            *
 * https://www.interactdigitalarts.uk                               *
