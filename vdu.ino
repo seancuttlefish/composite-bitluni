@@ -7,6 +7,7 @@
 *                                                                  *
 * ESP32 video generator based on composite video code from bitluni *
 * https://bitluni.net/                                             *
+*                                                                  *
 *******************************************************************/
 
 #include <soc/rtc.h>

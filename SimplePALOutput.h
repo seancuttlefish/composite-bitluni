@@ -61,7 +61,6 @@ class SimplePALOutput
       blank[p ^ 1] = b0;
     }
 
-    
     /*float r = 1;
     float g = 0;
     float b = 0;
