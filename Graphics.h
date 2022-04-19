@@ -191,7 +191,7 @@ class Graphics
   {
     return (r >> 4) + (g & 0xf0) + ((b & 0xf0) << 4) + ((b & 0xf0) << 12);
   }
-    
+
   void enqueueTriangle(short *v0, short *v1, short *v2, unsigned int color);
   void triangle(short *v0, short *v1, short *v2, unsigned int color); 
   void line(int x1, int y1, int x2, int y2, unsigned int color);

@@ -165,6 +165,10 @@ void Graphics::triangle(short *v0, short *v1, short *v2, unsigned int color)
   }
 }
 
+/********/
+/* line */
+/********/
+
 void Graphics::line(int x1, int y1, int x2, int y2, unsigned int color)
 {
   int x, y, xe, ye;
@@ -250,6 +254,10 @@ void Graphics::line(int x1, int y1, int x2, int y2, unsigned int color)
   }
 }
 
+/***********/
+/* fillRec */
+/***********/
+
 void Graphics::fillRect(int x, int y, int w, int h, unsigned int color)
 {
   if(x < 0)
@@ -271,6 +279,10 @@ void Graphics::fillRect(int x, int y, int w, int h, unsigned int color)
       dotFast(i, j, color);
 }
 
+/********/
+/* rect */
+/********/
+
 void Graphics::rect(int x, int y, int w, int h, unsigned int color)
 {
   fillRect(x, y, w, 1, color);
@@ -278,4 +290,3 @@ void Graphics::rect(int x, int y, int w, int h, unsigned int color)
   fillRect(x, y + h - 1, w, 1, color);
   fillRect(x + w - 1, y, 1, h, color);
 }
-

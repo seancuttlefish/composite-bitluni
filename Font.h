@@ -27,4 +27,3 @@ class Font
           g.dot(px + x, py + y, backColor);
   }
 };
-
