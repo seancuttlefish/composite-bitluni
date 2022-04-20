@@ -1,4 +1,4 @@
-# vdu
+# vdu: The Starting Point
 
 This is a stripped-down program for generating composite video on the ESP32 based on bitluni's Space Invader game. It is the starting point for the vdu project.
 
