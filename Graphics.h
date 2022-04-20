@@ -204,8 +204,8 @@ class Graphics
 /* draw functions */
 /*******&**********/
 
-  void triangle(short *v0, short *v1, short *v2, unsigned int color); 
   void line(int x1, int y1, int x2, int y2, unsigned int color);
-  void fillRect(int x, int y, int w, int h, unsigned int color);
+  void triangle(short *v0, short *v1, short *v2, unsigned int color); 
   void rect(int x, int y, int w, int h, unsigned int color);
+  void fillRect(int x, int y, int w, int h, unsigned int color);
 };

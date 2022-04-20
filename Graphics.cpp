@@ -102,55 +102,6 @@ void Graphics::print(int number, int base, int minCharacters)
   print(&temp[i + 1]);
 }
 
-/************/
-/* triangle */
-/************/
-
-void Graphics::triangle(short *v0, short *v1, short *v2, unsigned int color)
-{
-  short *v[3] = {v0, v1, v2};
-  if(v[1][1] < v[0][1])
-  {
-    short *vb = v[0]; v[0] = v[1]; v[1] = vb;
-  }
-  if(v[2][1] < v[1][1])
-  {
-    short *vb = v[1]; v[1] = v[2]; v[2] = vb;
-  }
-  if(v[1][1] < v[0][1])
-  {
-    short *vb = v[0]; v[0] = v[1]; v[1] = vb;
-  }
-  int y = v[0][1];
-  int xac = v[0][0] << 16;
-  int xab = v[0][0] << 16;
-  int xbc = v[1][0] << 16;
-  int xaci = 0;
-  int xabi = 0;
-  int xbci = 0;
-  if(v[1][1] != v[0][1])
-    xabi = ((v[1][0] - v[0][0]) << 16) / (v[1][1] - v[0][1]);
-  if(v[2][1] != v[0][1])
-    xaci = ((v[2][0] - v[0][0]) << 16) / (v[2][1] - v[0][1]);
-  if(v[2][1] != v[1][1])
-    xbci = ((v[2][0] - v[1][0]) << 16) / (v[2][1] - v[1][1]);
-
-  for(; y < v[1][1] && y < yres; y++)
-  {
-    if(y >= 0)
-      xLine(xab >> 16, xac >> 16, y, color);
-    xab += xabi;
-    xac += xaci;
-  }
-  for(; y < v[2][1] && y < yres; y++)
-  {
-    if(y >= 0)
-      xLine(xbc >> 16, xac >> 16, y, color);
-    xbc += xbci;
-    xac += xaci;
-  }
-}
-
 /********/
 /* line */
 /********/
@@ -237,6 +188,55 @@ void Graphics::line(int x1, int y1, int x2, int y2, unsigned int color)
       }
       dot(x, y, color);
     }
+  }
+}
+
+/************/
+/* triangle */
+/************/
+
+void Graphics::triangle(short *v0, short *v1, short *v2, unsigned int color)
+{
+  short *v[3] = {v0, v1, v2};
+  if(v[1][1] < v[0][1])
+  {
+    short *vb = v[0]; v[0] = v[1]; v[1] = vb;
+  }
+  if(v[2][1] < v[1][1])
+  {
+    short *vb = v[1]; v[1] = v[2]; v[2] = vb;
+  }
+  if(v[1][1] < v[0][1])
+  {
+    short *vb = v[0]; v[0] = v[1]; v[1] = vb;
+  }
+  int y = v[0][1];
+  int xac = v[0][0] << 16;
+  int xab = v[0][0] << 16;
+  int xbc = v[1][0] << 16;
+  int xaci = 0;
+  int xabi = 0;
+  int xbci = 0;
+  if(v[1][1] != v[0][1])
+    xabi = ((v[1][0] - v[0][0]) << 16) / (v[1][1] - v[0][1]);
+  if(v[2][1] != v[0][1])
+    xaci = ((v[2][0] - v[0][0]) << 16) / (v[2][1] - v[0][1]);
+  if(v[2][1] != v[1][1])
+    xbci = ((v[2][0] - v[1][0]) << 16) / (v[2][1] - v[1][1]);
+
+  for(; y < v[1][1] && y < yres; y++)
+  {
+    if(y >= 0)
+      xLine(xab >> 16, xac >> 16, y, color);
+    xab += xabi;
+    xac += xaci;
+  }
+  for(; y < v[2][1] && y < yres; y++)
+  {
+    if(y >= 0)
+      xLine(xbc >> 16, xac >> 16, y, color);
+    xbc += xbci;
+    xac += xaci;
   }
 }
 
