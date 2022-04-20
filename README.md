@@ -1,10 +1,10 @@
 # vdu: The Starting Point
 
-This is a stripped-down program for generating composite video on the ESP32 based on bitluni's Space Invader game. It is the starting point for the vdu project.
+This is a stripped-down program for generating composite video on the ESP32 based on bitluni's Space Invader game. It was the starting point for the vdu project.
 
-Basically, I've taken all of the code I didn't want out of bitluni's game to leave something that simply allows you to draw text, triangles, lines, and filled and unfilled rectangles. I've also added some comments and moved a few things around to help with readabiliy. The process of doing this was very helpful in helping me to understand his code.
+Basically, I've taken all of the code I didn't want out of bitluni's game to leave something that simply allows you to draw text, triangles, lines, and filled and unfilled rectangles. I've also added some comments and moved a few things around to help with readabiliy. The process of doing this was very helpful in helping me to understand his code. All the good stuff is still bitluni's.
 
-As with the original code, the composite video output is on pin 25. I've removed the audio output code for now.
+As with the bitluni code, the composite video output is on pin 25. I've removed the audio code for now.
 
 ## Functions
 
