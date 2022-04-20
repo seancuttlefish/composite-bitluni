@@ -5,37 +5,7 @@
 * Sean Clark                                                       *
 * Interact digital Arts                                            *
 * https://www.interactdigitalarts.uk                               *
-*                                                                  *
-* ESP32 video generator based on composite video code
-^ from bitluni. Basially, I've stripped all of the complicated code
-*
-* https://bitluni.net/                                             *
-*                                                                  *
-* - graphics.init                                                  *
-* - graphics.begin                                                 *
-* - graphics.end                                                   *
-                                                                   *
-* - graphics.setTextColor                                          *
-* - graphics.setFont                                               *
-* - graphics.setCursor                                             *
-* - graphics.print                                                 *
-                 ß∑                                                  *
-* - graphics.dotFast                                               *
-* - graphics.dot                                                   *
-* - graphics.dotMixFaster                                          *
-* - graphics.dotMix                                                *
-* - graphics.dotAdd                                                *
-* - graphics.get                                                   *
-*                                                                  *
-* - graphics.triangle                                              *
-* - graphics.line                                                  *
-* - graphics.fillRect                                              *
-* - graphics.rect                                                  *
-*                                                                  *
-* - graphics.rgb                                                   *
-* - graphics.rgba                                                  *
-*                                                                  *
-********************************************************************/
+*******************************************************************/
 
 #include <soc/rtc.h>
 #include "Graphics.h"
