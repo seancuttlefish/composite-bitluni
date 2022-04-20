@@ -32,7 +32,7 @@ class SimplePALOutput
   short UVLUT[16];
 
   static const i2s_port_t I2S_PORT = (i2s_port_t)I2S_NUM_0;
-    
+ßß
   SimplePALOutput()
   {
     for(int i = 0; i < syncSamples; i++)
@@ -79,7 +79,7 @@ class SimplePALOutput
       line[0][p ^ 1] = b0;
       line[1][p ^ 1] = b1;
     }*/
-    
+
     for(int i = 0; i < imageSamples; i++)
     {
       int p = frameStart + i;
@@ -169,7 +169,7 @@ class SimplePALOutput
       sendLine(line[0]);
       sendLine(line[1]);
     }
-    
+
     for(int i = 0; i < 25; i++)
       sendLine(blank);
     for(int i = 0; i < 3; i++)

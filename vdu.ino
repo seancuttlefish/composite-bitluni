@@ -6,19 +6,20 @@
 * Interact digital Arts                                            *
 * https://www.interactdigitalarts.uk                               *
 *                                                                  *
-* ESP32 video generator based on composite video code from bitluni *
+* ESP32 video generator based on composite video code
+^ from bitluni. Basially, I've stripped all of the complicated code
+*
 * https://bitluni.net/                                             *
 *                                                                  *
 * - graphics.init                                                  *
 * - graphics.begin                                                 *
-* - graphics.flush                                                 *
 * - graphics.end                                                   *
                                                                    *
 * - graphics.setTextColor                                          *
 * - graphics.setFont                                               *
 * - graphics.setCursor                                             *
 * - graphics.print                                                 *
-                                                                   *
+                 ß∑                                                  *
 * - graphics.dotFast                                               *
 * - graphics.dot                                                   *
 * - graphics.dotMixFaster                                          *
@@ -26,15 +27,13 @@
 * - graphics.dotAdd                                                *
 * - graphics.get                                                   *
 *                                                                  *
+* - graphics.triangle                                              *
 * - graphics.line                                                  *
 * - graphics.fillRect                                              *
 * - graphics.rect                                                  *
 *                                                                  *
 * - graphics.rgb                                                   *
 * - graphics.rgba                                                  *
-* - graphics.xLine                                                 *
-* - graphics.triangle                                              *
-* - graphics.enqueueTriangle                                       *
 *                                                                  *
 ********************************************************************/
 
@@ -64,9 +63,22 @@ void setup()
 
 void loop()
 {
-  // Draw some random lines
+  // Draw some text
+  graphics.begin(0); // fill the backbuffer with graphics. > -1 will clear the screen.
+  graphics.end(); // swap the buffers
+
   // Draw some random triangles
+  graphics.begin(0);
+  graphics.end();
+
+  // Draw some random lines
+  graphics.begin(0);
+  graphics.end();
+
   // Draw some random rectangles
+  graphics.begin(0);
+  graphics.end();
+
   // Draw some random filled rectangles
   graphics.begin(0);
   for(int i=0;i<10;i++)

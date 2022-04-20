@@ -1,17 +1,14 @@
 #pragma once
+#include <stdlib.h>
 #include "Graphics.h"
 #include "Font.h"
-#include "TriangleTree.h"
-#include <stdlib.h>
 
-Graphics::Graphics(int w, int h, int initialTrinagleBufferSize)
+Graphics::Graphics(int w, int h)
   :xres(w), 
   yres(h)
 {
   font = 0;
   cursorX = cursorY = cursorBaseX = 0;
-  trinagleBufferSize = initialTrinagleBufferSize;
-  triangleCount = 0;
   frontColor = 0xffff;
   backColor = 0;
 }
@@ -23,20 +20,39 @@ void Graphics::setTextColor(int front, int back)
   backColor = back;
 }
 
+/***********/
+/* control */
+/***********/
+
 void Graphics::init()
 {
   frame = (char**)malloc(yres * sizeof(char*));
   backbuffer = (char**)malloc(yres * sizeof(char*));
-  //not enough memory for z-buffer implementation
-  //zbuffer = (char**)malloc(yres * sizeof(char*));
   for(int y = 0; y < yres; y++)
   {
     frame[y] = (char*)malloc(xres);
     backbuffer[y] = (char*)malloc(xres);
-    //zbuffer[y] = (char*)malloc(xres);
   }
-  triangleBuffer = (TriangleTree*)malloc(sizeof(TriangleTree) * trinagleBufferSize);
 }
+
+void Graphics::begin(int clear)
+{
+  if(clear > -1)
+    for(int y = 0; y < yres; y++)
+      for(int x = 0; x < xres; x++)
+        dotFast(x, y, clear);
+}
+
+void Graphics::end()
+{
+  char **b = backbuffer;
+  backbuffer = frame;
+  frame = b;    
+}
+
+/********/
+/* text */
+/********/
 
 void Graphics::setFont(Font &font)
 {
@@ -86,39 +102,9 @@ void Graphics::print(int number, int base, int minCharacters)
   print(&temp[i + 1]);
 }
 
-void Graphics::begin(int clear)
-{
-  if(clear > -1)
-    for(int y = 0; y < yres; y++)
-      for(int x = 0; x < xres; x++)
-        dotFast(x, y, clear);
-  triangleCount = 0;
-  triangleRoot = 0;
-}
-
-void Graphics::flush()
-{
-  if(triangleRoot)
-    triangleRoot->draw(*this);
-}
-
-void Graphics::end()
-{
-  char **b = backbuffer;
-  backbuffer = frame;
-  frame = b;    
-}
-
-void Graphics::enqueueTriangle(short *v0, short *v1, short *v2, unsigned int color)
-{
-  if(triangleCount >= trinagleBufferSize) return;
-  TriangleTree &t = triangleBuffer[triangleCount++];
-  t.set(v0, v1, v2, color);
-  if(triangleRoot)
-    triangleRoot->add(&triangleRoot, t);
-  else
-    triangleRoot = &t;
-}
+/************/
+/* triangle */
+/************/
 
 void Graphics::triangle(short *v0, short *v1, short *v2, unsigned int color)
 {
