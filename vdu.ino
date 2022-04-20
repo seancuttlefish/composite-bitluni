@@ -5,6 +5,7 @@
 * Sean Clark                                                       *
 * Interact digital Arts                                            *
 * https://www.interactdigitalarts.uk                               *
+* See README.MD for information.                                   *
 *******************************************************************/
 
 #include <soc/rtc.h>
