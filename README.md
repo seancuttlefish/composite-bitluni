@@ -19,10 +19,10 @@ As with the bitluni original, the composite video output is on pin 25. Yhere is 
 
 ### Graphic
 - graphics.dot
-- graphics.triangle
 - graphics.line
-- graphics.fillRect
+- graphics.triangle
 - graphics.rect
+- graphics.fillRect
 
 ### Colour
 - graphics.rgb
