@@ -4,7 +4,7 @@ This is a stripped-down program for generating composite video on the ESP32 base
 
 Basically, I've taken all of the code I didn't want out of bitluni's game to leave something that simply allows you to draw text, triangles, lines, and filled and unfilled rectangles. I've also added some comments and moved a few things around to help with readabiliy. The process of doing this was very helpful in helping me to understand his code.
 
-As with the original code, the composite video output is on pin 25. I've removed the audio output for now.
+As with the original code, the composite video output is on pin 25. I've removed the audio output code for now.
 
 ## Functions
 
