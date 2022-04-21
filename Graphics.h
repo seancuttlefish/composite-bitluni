@@ -164,25 +164,11 @@ class Graphics
     }
   } 
   
-  inline int get(int x, int y)
+  inline int dotGet(int x, int y)
   {
     if((unsigned int)x < xres && (unsigned int)y < yres)
       return backbuffer[y][x];
     return 0;
-  }
-
-  inline void xLine(int x0, int x1, int y, unsigned int color)
-  {
-    if(x0 > x1)
-    {
-      int xb = x0;
-      x0 = x1;
-      x1 = xb;
-    }
-    if(x0 < 0) x0 = 0;
-    if(x1 > xres) x1 = xres;
-    for(int x = x0; x < x1; x++)
-      dotFast(x, y, color);
   }
 
 /********************/
@@ -206,7 +192,8 @@ class Graphics
 /*******&*************/
 
   void line(int x1, int y1, int x2, int y2, unsigned int color);
-  void triangle(short *v0, short *v1, short *v2, unsigned int color); 
+  void triangle(int x1, int y1, int x2, int y2, int x3, int y3, unsigned int color); 
+  void fillTriangle(int x1, int y1, int x2, int y2, int x3, int y3, unsigned int color); 
   void rect(int x, int y, int w, int h, unsigned int color);
   void fillRect(int x, int y, int w, int h, unsigned int color);
 };

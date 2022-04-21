@@ -195,49 +195,34 @@ void Graphics::line(int x1, int y1, int x2, int y2, unsigned int color)
 /* triangle */
 /************/
 
-void Graphics::triangle(short *v0, short *v1, short *v2, unsigned int color)
+void Graphics::triangle(int x1, int y1, int x2, int y2, int x3, int y3, unsigned int color)
 {
-  short *v[3] = {v0, v1, v2};
-  if(v[1][1] < v[0][1])
-  {
-    short *vb = v[0]; v[0] = v[1]; v[1] = vb;
-  }
-  if(v[2][1] < v[1][1])
-  {
-    short *vb = v[1]; v[1] = v[2]; v[2] = vb;
-  }
-  if(v[1][1] < v[0][1])
-  {
-    short *vb = v[0]; v[0] = v[1]; v[1] = vb;
-  }
-  int y = v[0][1];
-  int xac = v[0][0] << 16;
-  int xab = v[0][0] << 16;
-  int xbc = v[1][0] << 16;
-  int xaci = 0;
-  int xabi = 0;
-  int xbci = 0;
-  if(v[1][1] != v[0][1])
-    xabi = ((v[1][0] - v[0][0]) << 16) / (v[1][1] - v[0][1]);
-  if(v[2][1] != v[0][1])
-    xaci = ((v[2][0] - v[0][0]) << 16) / (v[2][1] - v[0][1]);
-  if(v[2][1] != v[1][1])
-    xbci = ((v[2][0] - v[1][0]) << 16) / (v[2][1] - v[1][1]);
+  line(x1, y1, x2, y2, color);
+  line(x2, y2, x3, y3, color);
+  line(x3, y3, x1, y1, color);
+}
 
-  for(; y < v[1][1] && y < yres; y++)
-  {
-    if(y >= 0)
-      xLine(xab >> 16, xac >> 16, y, color);
-    xab += xabi;
-    xac += xaci;
-  }
-  for(; y < v[2][1] && y < yres; y++)
-  {
-    if(y >= 0)
-      xLine(xbc >> 16, xac >> 16, y, color);
-    xbc += xbci;
-    xac += xaci;
-  }
+/****************/
+/* fillTriangle */
+/****************/
+
+void Graphics::fillTriangle(int x1, int y1, int x2, int y2, int x3, int y3, unsigned int color)
+{
+  line(x1, y1, x2, y2, color);
+  line(x2, y2, x3, y3, color);
+  line(x3, y3, x1, y1, color);
+}
+
+/********/
+/* rect */
+/********/
+
+void Graphics::rect(int x, int y, int w, int h, unsigned int color)
+{
+  line(x, y, x + w, y, color);
+  line(x + w, y, x + w, y + h, color);
+  line(x + w, y + h, x, y + h, color);
+  line(x, y + h, x, y, color);
 }
 
 /***********/
@@ -263,16 +248,4 @@ void Graphics::fillRect(int x, int y, int w, int h, unsigned int color)
   for(int j = y; j < y + h; j++)
     for(int i = x; i < x + w; i++)
       dotFast(i, j, color);
-}
-
-/********/
-/* rect */
-/********/
-
-void Graphics::rect(int x, int y, int w, int h, unsigned int color)
-{
-  fillRect(x, y, w, 1, color);
-  fillRect(x, y, 1, h, color);
-  fillRect(x, y + h - 1, w, 1, color);
-  fillRect(x + w - 1, y, 1, h, color);
 }

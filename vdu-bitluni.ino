@@ -42,32 +42,41 @@ void loop()
    graphics.begin(0);
   for(int i=0;i<50;i++)
   {
-    graphics.dot(random(XRES),random(240),graphics.rgb(random(255), random(255), random(255)));
+    graphics.dot(random(XRES),random(YRES),graphics.rgb(random(255), random(255), random(255)));
   }
   graphics.end();
   delay(5000);
 
   // Draw some random lines
   graphics.begin(0);
-  for(int i=0;i<50;i++)
+  for(int i=0;i<20;i++)
   {
     graphics.line(random(XRES),random(YRES),random(XRES),random(YRES),graphics.rgb(random(255), random(255), random(255)));
   }
   graphics.end();
   delay(5000);
   
-  // Draw some random rectangles
+  // Draw some random triangles
   graphics.begin(0);
-  for(int i=0;i<50;i++)
+  for(int i=0;i<10;i++)
   {
-    //graphics.triangle([random(320),random(240)],[random(320),random(240)],[random(320),random(240)],graphics.rgb(random(255), random(255), random(255)));
+    graphics.fillTriangle(random(320),random(240),random(320),random(240),random(320),random(240),graphics.rgb(random(255), random(255), random(255)));
+  }
+  graphics.end();
+  delay(5000);
+
+  // Draw some random filled triangles
+  graphics.begin(0);
+  for(int i=0;i<20;i++)
+  {
+    graphics.triangle(random(320),random(240),random(320),random(240),random(320),random(240),graphics.rgb(random(255), random(255), random(255)));
   }
   graphics.end();
   delay(5000);
 
   // Draw some random rectangles
   graphics.begin(0);
-  for(int i=0;i<50;i++)
+  for(int i=0;i<20;i++)
   {
     graphics.rect(random(XRES),random(YRES),random(200),random(200),graphics.rgb(random(255), random(255), random(255)));
   }
@@ -76,7 +85,7 @@ void loop()
 
   // Draw some random filled rectangles
   graphics.begin(0);
-  for(int i=0;i<50;i++)
+  for(int i=0;i<20;i++)
   {
     graphics.fillRect(random(XRES),random(YRES),random(200),random(200),graphics.rgb(random(255), random(255), random(255)));
   }
