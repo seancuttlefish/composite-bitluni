@@ -42,7 +42,7 @@ void loop()
    graphics.begin(0);
   for(int i=0;i<50;i++)
   {
-    graphics.dot(random(320),random(240),graphics.rgb(random(255), random(255), random(255)));
+    graphics.dot(random(XRES),random(240),graphics.rgb(random(255), random(255), random(255)));
   }
   graphics.end();
   delay(5000);
@@ -51,7 +51,7 @@ void loop()
   graphics.begin(0);
   for(int i=0;i<50;i++)
   {
-    graphics.line(random(320),random(240),random(320),random(240),graphics.rgb(random(255), random(255), random(255)));
+    graphics.line(random(XRES),random(YRES),random(XRES),random(YRES),graphics.rgb(random(255), random(255), random(255)));
   }
   graphics.end();
   delay(5000);
@@ -69,7 +69,7 @@ void loop()
   graphics.begin(0);
   for(int i=0;i<50;i++)
   {
-    graphics.rect(random(320),random(240),random(200),random(200),graphics.rgb(random(255), random(255), random(255)));
+    graphics.rect(random(XRES),random(YRES),random(200),random(200),graphics.rgb(random(255), random(255), random(255)));
   }
   graphics.end();
   delay(5000);
@@ -78,7 +78,7 @@ void loop()
   graphics.begin(0);
   for(int i=0;i<50;i++)
   {
-    graphics.fillRect(random(320),random(240),random(200),random(200),graphics.rgb(random(255), random(255), random(255)));
+    graphics.fillRect(random(XRES),random(YRES),random(200),random(200),graphics.rgb(random(255), random(255), random(255)));
   }
   graphics.end();
   delay(5000);
