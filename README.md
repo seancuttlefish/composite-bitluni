@@ -32,7 +32,7 @@ As with the bitluni original, the composite video output is on pin 25. Yhere is 
 ## Notes
 
 ### SimplePALOutpit.h
-- The composite-video-over-the-ESP32's-DAC stuff is all very clever and explained in his YouTube videos.
+- The composite-video-over-the-ESP32's-DAC stuff is all very clever and explained in bitluni's YouTube videos.
 
 ### RGB2YUV.h
 - This is a big lookup table used in the conversion of RGB to the YUV colour model used in composite video.
