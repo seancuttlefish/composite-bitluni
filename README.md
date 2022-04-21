@@ -31,16 +31,16 @@ As with the bitluni original, the composite video output is on pin 25. Yhere is 
 
 ## Notes
 
-* SimplePALOutpit.h *
-The composite video over the ESP32's DAC stuff is all very clever and explained in his YouTube videos. Basically, it turns the frame in to cideo signals.
+### SimplePALOutpit.h
+- The composite video over the ESP32's DAC stuff is all very clever and explained in his YouTube videos. Basically, it turns the frame in to cideo signals.
 
-* Graphics.cpp / Graphics.h *
-There is a "backbuffer" where all the latest graphics are placed so that a new frame is not part-rendered before it is ready (this is called double buffering).
-The backbuffer is copied to "frame" when it is ready tp be rendered by SimplePALOutpit.h.
-"Graphics.begin" (optionally) clears the buffer.
-"Graphics.end" copies the buffer to the frame.
-The "Graphics.dot" functions are used when rasterising a line, rectangle etc. "Graphics.dotFast" has no frame boundary check.
-The "Graphics.line" function graws a line between two points. I base all of my polygons on this. bitluni's code is a little different.
+### Graphics.cpp / Graphics.h
+- There is a "backbuffer" where all the latest graphics are placed so that a new frame is not part-rendered before it is ready (this is called double buffering).
+- The backbuffer is copied to "frame" when it is ready tp be rendered by SimplePALOutpit.h.
+- "Graphics.begin" (optionally) clears the buffer.
+- "Graphics.end" copies the buffer to the frame.
+- The "Graphics.dot" functions are used when rasterising a line, rectangle etc. "Graphics.dotFast" has no frame boundary check.
+- The "Graphics.line" function graws a line between two points. I base all of my polygons on this. bitluni's code is a little different.
 
-* RGB2YUV.h *
-This is a big lookup table used in the conversion of RGB to the YUV colour model used in composite video.
+### RGB2YUV.h
+- This is a big lookup table used in the conversion of RGB to the YUV colour model used in composite video.
