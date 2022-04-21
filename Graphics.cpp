@@ -15,7 +15,7 @@ Graphics::Graphics(int w, int h)
 
 void Graphics::setTextColor(int front, int back)
 {
-  //-1 = transparent back;
+  // ;-1 = transparent back;
   frontColor = front;
   backColor = back;
 }

@@ -7,7 +7,7 @@ const int syncSamples = 64;
 const int burstSamples = 38;
 
 const int burstStart = 70;
-const int frameStart = 160; //must be even to simplify buffer word swap
+const int frameStart = 160; // must be even to simplify buffer word swap
 const int imageSamples = 640;
 
 const int syncLevel = 0;
@@ -32,7 +32,7 @@ class SimplePALOutput
   short UVLUT[16];
 
   static const i2s_port_t I2S_PORT = (i2s_port_t)I2S_NUM_0;
-ßß
+    
   SimplePALOutput()
   {
     for(int i = 0; i < syncSamples; i++)
@@ -60,26 +60,7 @@ class SimplePALOutput
       line[1][p ^ 1] = b1;
       blank[p ^ 1] = b0;
     }
-
-    /*float r = 1;
-    float g = 0;
-    float b = 0;
-    float y = 0.299 * r + 0.587 * g + 0.114 * b;
-    //float u = 0.493 * (b - y);
-    //float v = 0.877 * (r - y);
-    float u =  -0.147407 * r - 0.289391 * g + 0.436798 * b; //(-0.436798, 0.436798)
-    float v = 0.614777 * r - 0.514799 * g - 0.099978 * b;   //(-0.614777, 0.614777)
-    for(int i = 0; i < imageSamples; i++)
-    {
-      int p = frameStart + i;
-      int c = p - burstStart;
-      unsigned short b0 = ((short)(blankLevel + (y + u * sin(c * burstPerSample) + v * cos(c * burstPerSample)) * 50 )) << 8;
-      unsigned short b1 = ((short)(blankLevel + (y + u * sin(c * burstPerSample) - v * cos(c * burstPerSample)) * 50 )) << 8;
-      //unsigned short b0 = ((short)(blankLevel + sin(p * burstPerSample + (i/40) * colorFactor) * 20) + 20) << 8;
-      line[0][p ^ 1] = b0;
-      line[1][p ^ 1] = b1;
-    }*/
-
+    
     for(int i = 0; i < imageSamples; i++)
     {
       int p = frameStart + i;
@@ -112,13 +93,13 @@ class SimplePALOutput
     i2s_set_pin(I2S_PORT, NULL);                           //use internal DAC
     i2s_set_sample_rates(I2S_PORT, 1000000);               //dummy sample rate, since the function fails at high values
   
-    //this is the hack that enables the highest sampling rate possible ~13MHz, have fun
+    // this is the hack that enables the highest sampling rate possible ~13MHz, have fun
     SET_PERI_REG_BITS(I2S_CLKM_CONF_REG(0), I2S_CLKM_DIV_A_V, 1, I2S_CLKM_DIV_A_S);
     SET_PERI_REG_BITS(I2S_CLKM_CONF_REG(0), I2S_CLKM_DIV_B_V, 1, I2S_CLKM_DIV_B_S);
     SET_PERI_REG_BITS(I2S_CLKM_CONF_REG(0), I2S_CLKM_DIV_NUM_V, 2, I2S_CLKM_DIV_NUM_S); 
     SET_PERI_REG_BITS(I2S_SAMPLE_RATE_CONF_REG(0), I2S_TX_BCK_DIV_NUM_V, 2, I2S_TX_BCK_DIV_NUM_S);
 
-    //untie DACs
+    // untie DACs
     SET_PERI_REG_BITS(I2S_CONF_CHAN_REG(0), I2S_TX_CHAN_MOD_V, 3, I2S_TX_CHAN_MOD_S);
     SET_PERI_REG_BITS(I2S_FIFO_CONF_REG(0), I2S_TX_FIFO_MOD_V, 1, I2S_TX_FIFO_MOD_S);
   }
@@ -169,7 +150,7 @@ class SimplePALOutput
       sendLine(line[0]);
       sendLine(line[1]);
     }
-
+    
     for(int i = 0; i < 25; i++)
       sendLine(blank);
     for(int i = 0; i < 3; i++)

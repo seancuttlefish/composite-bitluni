@@ -1,5 +1,6 @@
 #pragma once
 #include "RGB2YUV.h"
+
 class Font;
 
 class Graphics
@@ -200,9 +201,9 @@ class Graphics
     return (r >> 4) + (g & 0xf0) + ((b & 0xf0) << 4) + ((b & 0xf0) << 12);
   }
 
-/******&***********/
-/* draw functions */
-/*******&**********/
+/******&**************/
+/* graphic functions */
+/*******&*************/
 
   void line(int x1, int y1, int x2, int y2, unsigned int color);
   void triangle(short *v0, short *v1, short *v2, unsigned int color); 
