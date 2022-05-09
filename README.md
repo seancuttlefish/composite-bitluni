@@ -49,8 +49,8 @@ As with the bitluni original, the composite video output is on pin 25. Yhere is 
 - Rather than develop any more graphical functions, I think fuure versions of this code should make use of a pre-existing graphics library.
 
 ### bitluni's Videos
-- Pt1 (https://www.youtube.com/watch?v=5t1_XNc3vNw)
-- Pt2 (https://www.youtube.com/watch?v=Qpt14gJVpTk)
-- Pt3 (https://www.youtube.com/watch?v=MOoKQnWF4OY)
-- Pt4 (https://www.youtube.com/watch?v=-JXuwwXQh8c)
+- Pt1 https://www.youtube.com/watch?v=5t1_XNc3vNw
+- Pt2 https://www.youtube.com/watch?v=Qpt14gJVpTk
+- Pt3 https://www.youtube.com/watch?v=MOoKQnWF4OY
+- Pt4 https://www.youtube.com/watch?v=-JXuwwXQh8c
 
