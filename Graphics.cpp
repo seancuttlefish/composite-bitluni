@@ -13,13 +13,6 @@ Graphics::Graphics(int w, int h)
   backColor = 0;
 }
 
-void Graphics::setTextColor(int front, int back)
-{
-  // ;-1 = transparent back;
-  frontColor = front;
-  backColor = back;
-}
-
 /***********/
 /* control */
 /***********/
@@ -57,6 +50,13 @@ void Graphics::end()
 void Graphics::setFont(Font &font)
 {
   this->font = &font;
+}
+
+void Graphics::setTextColor(int front, int back)
+{
+  // ;-1 = transparent back;
+  frontColor = front;
+  backColor = back;
 }
 
 void Graphics::setCursor(int x, int y)
@@ -202,17 +202,6 @@ void Graphics::triangle(int x1, int y1, int x2, int y2, int x3, int y3, unsigned
   line(x3, y3, x1, y1, color);
 }
 
-/****************/
-/* fillTriangle */
-/****************/
-
-void Graphics::fillTriangle(int x1, int y1, int x2, int y2, int x3, int y3, unsigned int color)
-{
-  line(x1, y1, x2, y2, color);
-  line(x2, y2, x3, y3, color);
-  line(x3, y3, x1, y1, color);
-}
-
 /********/
 /* rect */
 /********/
@@ -231,21 +220,6 @@ void Graphics::rect(int x, int y, int w, int h, unsigned int color)
 
 void Graphics::fillRect(int x, int y, int w, int h, unsigned int color)
 {
-  if(x < 0)
-  {
-    w += x;
-    x = 0;
-  }
-  if(y < 0)
-  {
-    h += y;
-    y = 0;
-  }
-  if(x + w > xres)
-    w = xres - x;
-  if(y + h > yres)
-    h = yres - y;
   for(int j = y; j < y + h; j++)
-    for(int i = x; i < x + w; i++)
-      dotFast(i, j, color);
+    line(x, j, x + w, j, color);
 }

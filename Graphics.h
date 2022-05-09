@@ -193,7 +193,6 @@ class Graphics
 
   void line(int x1, int y1, int x2, int y2, unsigned int color);
   void triangle(int x1, int y1, int x2, int y2, int x3, int y3, unsigned int color); 
-  void fillTriangle(int x1, int y1, int x2, int y2, int x3, int y3, unsigned int color); 
   void rect(int x, int y, int w, int h, unsigned int color);
   void fillRect(int x, int y, int w, int h, unsigned int color);
 };

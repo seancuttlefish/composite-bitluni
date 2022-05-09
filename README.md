@@ -4,7 +4,7 @@ This is a stripped-down program for generating composite video on the ESP32 base
 
 Basically, I took all of the code I didn't want out of bitluni's game to leave something that allows you to draw text, dots, lines, triangles and filled and unfilled rectangles. I also added some comments and moved a few things around to help with readabiliy. The process of doing this was very helpful in helping me to understand his code. All the good stuff is still bitluni's, of couse.
 
-As with the bitluni original, the composite video output is on pin 25. Yhere is no audio.
+As with the bitluni original, the composite video output is on pin 25. Yhere is no audio in this version.
 
 ### Control
 - graphics.init
@@ -12,10 +12,11 @@ As with the bitluni original, the composite video output is on pin 25. Yhere is 
 - graphics.end
 
 ### Text
-- graphics.setTextColor
-- graphics.setFont
-- graphics.setCursor
-- graphics.print
+- graphics.setTextColor(int front, int back)
+- graphics.setFont(Font &font)
+- graphics.setCursor(int x, int y)
+- graphics.print(const char *str)
+- graphics.print(int number, int base = 10, int minCharacters = 1)
 
 ### Graphic
 - graphics.dot(int x, int y, int color) // there are other dot related functions.
@@ -45,7 +46,7 @@ As with the bitluni original, the composite video output is on pin 25. Yhere is 
 - The "Graphics.dot" functions are used when rasterising (converting to dots) a line, rectangle. rect etc.
 - "Graphics.dotFast" has no frame boundary check. Is it that much faster?
 - The "Graphics.line" function works out the dots that need to be shown when drawing a line between two points.
-- I base all of my polygons (filled and unfilled triangles and squares) on Graphics.line. bitluni's code is a little different.
+- I base all of my polygons (triangles, filled and unfilled squares) on Graphics.line. bitluni's code is a little different.
 - Rather than develop any more graphical functions, I think fuure versions of this code should make use of a pre-existing graphics library.
 
 ### bitluni's Videos
