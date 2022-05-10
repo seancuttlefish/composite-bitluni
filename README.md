@@ -1,5 +1,7 @@
 # composite-bitluni
 
+Original code taken from: https://github.com/bitluni/ESP32SpaceShooter
+
 This is a stripped-down program for generating composite video on the ESP32 based on bitluni's "Space Shooter" game. It was the starting point for the vdu project, but is generally useful when working with bitluni's composite video code for the ESP32.
 
 Basically, I took all of the code I didn't want out of bitluni's game to leave something that allows you to draw text, dots, lines, triangles and filled and unfilled rectangles. I also added some comments and moved a few things around to help with readabiliy. The process of doing this was very helpful in helping me to understand his code. All the good stuff is still bitluni's, of couse.
